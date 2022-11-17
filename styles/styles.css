@@ -1,0 +1,233 @@
+@import url('./fonts.css');
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Roboto', sans-serif;
+}
+
+.header {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 25px;
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 2;
+}
+
+.header .left {
+  letter-spacing: 1.5px;
+  font-size: 28px;
+  font-weight: bold;
+  color: #e1b111;
+}
+
+.header .right {
+  display: flex;
+  align-items: center;
+  font-size: 22px;
+  color: #3d475d;
+}
+
+.header .right .info {
+  cursor: pointer;
+}
+
+.header .right .share,
+.header .right .settings,
+.header .right .undo-redo  {
+  cursor: pointer;
+  margin-right: 12px;
+}
+
+.header .right .reset {
+  margin-right: 12px;
+  border: 2px solid #3d475d;
+  border-radius: 6px;
+  padding: 5px 8px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: default;
+  user-select: none;
+  transition: all 0.2s;
+}
+
+.header .right .reset.disabled {
+  opacity: 0.4;
+}
+
+.header .right .reset:not(.disabled):hover {
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.header .right .reset:not(.disabled):active {
+  cursor: pointer;
+  box-shadow: 0 0px 2px rgba(0, 0, 0, 0.4);
+}
+
+.header .right .undo-redo  {
+  padding: 4px 12px;
+  border-right: 1px solid #ddd;
+  border-left: 1px solid #ddd;
+}
+
+.header .right .undo-redo i:first-child {
+  margin-right: 10px;
+}
+
+.header .right .undo-redo i.disabled {
+  color: #aaa;
+  opacity: 0.7;
+  cursor: default;
+}
+
+.content {
+  display: flex;
+  height: calc(100vh - 60px);
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.col .hex {
+  font-size: 30px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  padding: 10px;
+  border-radius: 10px;
+  text-transform: uppercase;
+  text-align: center;
+  transition: all 0.25s;
+}
+
+.col .hex:hover {
+  background: rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.col .hex span {
+  display: block;
+  font-size: 12px;
+  margin-top: 20px;
+  text-transform: capitalize;
+  opacity: 0.6;
+}
+
+.col .color-name {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.col button {
+  outline: none;
+  border: none;
+  padding: 10px;
+  width: 43px;
+  height: 43px;
+  border-radius: 10px;
+  font-size: 20px;
+  background: transparent;
+  transition: all 0.25s;
+}
+
+.col button:hover {
+  background: rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.toast {
+  position: fixed;
+  top: 10px;
+  right: -1000px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.95);
+  color: #54e163;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+  z-index: 100;
+  transition: all 0.15s;
+}
+
+.toast.visible {
+  right: 20px;
+}
+
+.tutorial {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  opacity: 0;
+  transition: all 0.25s;
+}
+
+.tutorial.visible {
+  z-index: 9999;
+  opacity: 1;
+}
+
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: 9997;
+  cursor: pointer;
+}
+
+.modal {
+  position: absolute;
+  z-index: 9998;
+  padding: 30px 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #3d475d;
+}
+
+.modal div{
+  margin-bottom: 25px;
+}
+
+.modal div:last-child{
+  margin-bottom: 0px;
+}
+
+.modal div span {
+  border: 2px solid #3d475d;
+  border-radius: 6px;
+  padding: 5px 8px;
+  font-weight: 600;
+  font-size: 16px;
+  margin: 0 10px;
+  background-color: #ccc;
+}
+
+.modal div i {
+  border: 2px solid #3d475d;
+  border-radius: 6px;
+  padding: 5px;
+  background-color: #ccc;
+  font-size: 16px;
+  margin: 0 10px;
+}
